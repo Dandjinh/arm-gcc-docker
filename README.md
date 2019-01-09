@@ -4,21 +4,14 @@
 
 ### Components
 
-1. a docker includes gcc-arm-none-eabi, make, cmake, fish
-2. a GUI helper for building makefile(developing)
-
-### Usage
-
-1. setup projects with STM32CUBEMX
-2. write codes with vscode
-3. run docker and copy/link project files to docker
-4. run cmake/make in docker
-5. download/debug with [JLink](https://www.segger.com/products/debug-probes/j-link/) and [Ozone](https://www.segger.com/products/development-tools/ozone-j-link-debugger/)
+1. a docker where gcc-arm-none-eabi, make, cmake, fish installed
+2. a GUI helper for building makefile and communicating with server in docker (in development) 
+3. a server application running in docker and communicates with host (in development)
 
 ### Docker commands
 
-1. run docker
+1. just run docker
 > docker run -ti --name arm dandjinh/arm-gcc fish
 
-2. run docker and link project
-> docker run -ti --name arm -v /d/project:/root/workplace/project dandjinh/arm-gcc fish
+2. run docker and start server
+> docker run -d --name arm -p 12345:12345 dandjinh/arm-gcc helper-server
